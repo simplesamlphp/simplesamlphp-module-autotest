@@ -16,5 +16,5 @@ try {
     header('HTTP/1.0 500 Internal Server Error');
     header('Content-Type: text/plain; charset=utf-8');
     echo "ERROR\n";
-    echo $e->getMessage()."\n";
+    echo $e->getMessage() . "\n";
 }
