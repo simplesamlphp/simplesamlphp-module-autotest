@@ -14,10 +14,10 @@
         }
     ],
     "require": {
-        "simplesamlphp/composer-module-installer": "~1.0"
+        "simplesamlphp/composer-module-installer": "~1.0",
+        "simplesamlphp/simplesamlphp": "dev-master"
     },
     "require-dev": {
-        "simplesamlphp/simplesamlphp": "~1.17",
         "simplesamlphp/simplesamlphp-test-framework": "~0.1.0"
     }
 }

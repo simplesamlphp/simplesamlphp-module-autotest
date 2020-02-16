@@ -1,15 +1,19 @@
 <?php
 
+use Exception;
+use SimpleSAML\Auth;
+use SimpleSAML\Error;
+
 try {
     if (!isset($_GET['SourceID'])) {
-        throw new \SimpleSAML\Error\BadRequest('Missing SourceID parameter');
+        throw new Error\BadRequest('Missing SourceID parameter');
     }
     $sourceId = $_GET['SourceID'];
 
-    $as = new \SimpleSAML\Auth\Simple($sourceId);
+    $as = new Auth\Simple($sourceId);
 
     if (!$as->isAuthenticated()) {
-        throw new \SimpleSAML\Error\Exception('Not authenticated.');
+        throw new Error\Exception('Not authenticated.');
     }
 
     $attributes = $as->getAttributes();
@@ -22,7 +26,7 @@ try {
             echo "\t$value\n";
         }
     }
-} catch (\Exception $e) {
+} catch (Exception $e) {
     header('HTTP/1.0 500 Internal Server Error');
     header('Content-Type: text/plain; charset=utf-8');
     echo "ERROR\n";
