@@ -2,6 +2,7 @@
     "name": "simplesamlphp/simplesamlphp-module-autotest",
     "description": "This module provides an interface to do automatic testing of authentication sources.",
     "type": "simplesamlphp-module",
+    "license": "LGPL-2.1-or-later",
     "keywords": [ "simplesamlphp", "modules" ],
     "authors": [
         {
