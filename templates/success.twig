@@ -1,0 +1,9 @@
+OK
+{% if attributes is defined %}
+{% for name, values in attributes %}
+{{ name }}
+{% for value in values %}
+    {{ value }}
+{% endfor %}
+{% endfor %}
+{% endif %}
