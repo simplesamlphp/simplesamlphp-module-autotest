@@ -8,8 +8,10 @@ use SimpleSAML\Auth;
 use SimpleSAML\Configuration;
 use SimpleSAML\Error;
 use SimpleSAML\Session;
+use SimpleSAML\Utils;
 use SimpleSAML\XHTML\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Controller class for the autotest module.
@@ -25,6 +27,12 @@ class Autotest
 
     /** @var \SimpleSAML\Session */
     protected Session $session;
+
+    /**
+     * @var \SimpleSAML\Auth\Simple|string
+     * @psalm-var \SimpleSAML\Auth\Simple|class-string
+     */
+    protected $authSimple = Auth\Simple::class;
 
 
     /**
@@ -43,6 +51,17 @@ class Autotest
     ) {
         $this->config = $config;
         $this->session = $session;
+    }
+
+
+    /**
+     * Inject the \SimpleSAML\Auth\Simple dependency.
+     *
+     * @param \SimpleSAML\Auth\Simple $authSimple
+     */
+    public function setAuthSimple(Auth\Simple $authSimple): void
+    {
+        $this->authSimple = $authSimple;
     }
 
 
@@ -132,7 +151,7 @@ class Autotest
             throw new Error\BadRequest('Missing required SourceID query parameter.');
         }
 
-        return new Auth\Simple($sourceId);
+        return new $this->authSimple($sourceId);
     }
 
 
@@ -165,7 +184,7 @@ class Autotest
     {
         $t = new Template($this->config, 'autotest:failure.twig');
 
-        $t->setStatusCode(500);
+        $t->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
         $t->headers->set('Content-Type', 'text/plain; charset=utf-8');
         $t->data['message'] = $e->getMessage();
 
