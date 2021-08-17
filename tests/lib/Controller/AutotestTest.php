@@ -54,7 +54,7 @@ class AutotestTest extends TestCase
      *
      * @return void
      */
-    public function testAttributesNotAuthenticatd(): void
+    public function testAttributesNotAuthenticated(): void
     {
         $request = Request::create(
             '/attributes',
