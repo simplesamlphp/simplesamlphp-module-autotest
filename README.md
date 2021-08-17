@@ -21,17 +21,16 @@ where `dev-master` instructs Composer to install the `master` branch from the Gi
 [releases](https://github.com/simplesamlphp/simplesamlphp-module-autotest/releases) available if you
 want to use a stable version of the module.
 
-The module is enabled by default. If you want to disable the module once installed, you just need to create a file named
-`disable` in the `modules/autotest/` directory inside your SimpleSAMLphp installation.
+The module is disabled by default. If you want to enable the module once installed, you just have to add it to the `module.enable` array in your `config.php`.
 
 Usage
 -----
 
 This module provides three web pages:
 
-- `SIMPLESAMLPHP_ROOT/module.php/autotest/login.php`
-- `SIMPLESAMLPHP_ROOT/module.php/autotest/logout.php`
-- `SIMPLESAMLPHP_ROOT/module.php/autotest/attributes.php`
+- `SIMPLESAMLPHP_ROOT/module.php/autotest/login`
+- `SIMPLESAMLPHP_ROOT/module.php/autotest/logout`
+- `SIMPLESAMLPHP_ROOT/module.php/autotest/attributes`
 
 All the web pages have a mandatory parameter 'SourceID', which is the name of the authentication source.
 
