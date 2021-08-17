@@ -14,6 +14,8 @@ use SimpleSAML\XHTML\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use function call_user_func;
+
 /**
  * Set of tests for the controllers in the "autotest" module.
  *
@@ -77,7 +79,7 @@ class AutotestTest extends TestCase
 
         $response = $c->attributes($request);
 
-        $this->assertEquals(500, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $response->getStatusCode());
         $this->assertEquals('Not authenticated.', $response->data['message']);
     }
 
@@ -202,7 +204,7 @@ class AutotestTest extends TestCase
         );
 
         $c = new Controller\Autotest($this->config, $this->session);
-        $response = $c->attributes($request);
+        $response = call_user_func([$c, $endpoint], $request);
 
         $this->assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $response->getStatusCode());
         $this->assertEquals(
