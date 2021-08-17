@@ -147,7 +147,8 @@ class AutotestTest extends TestCase
 
 
     /**
-     * Test that accessing the attributes-endpoint while authenticated results in a success-response with attribute-values
+     * Test that accessing the attributes-endpoint while authenticated results in a
+     *  success-response with attribute-values
      *
      * @return void
      */
@@ -204,7 +205,10 @@ class AutotestTest extends TestCase
         $response = $c->attributes($request);
 
         $this->assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $response->getStatusCode());
-        $this->assertEquals("BADREQUEST('%REASON%' => 'Missing required SourceID query parameter.')", $response->data['message']);
+        $this->assertEquals(
+            "BADREQUEST('%REASON%' => 'Missing required SourceID query parameter.')",
+            $response->data['message']
+        );
     }
 
 
