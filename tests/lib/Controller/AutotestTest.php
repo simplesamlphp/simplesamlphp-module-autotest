@@ -85,6 +85,38 @@ class AutotestTest extends TestCase
 
 
     /**
+     * Test that accessing the login-endpoint while not authenticated results in a success-response
+     *
+     * @return void
+     */
+    public function testLoginNotAuthenticated(): void
+    {
+        $request = Request::create(
+            '/login',
+            'GET',
+            ['SourceID' => 'admin']
+        );
+
+        $c = new Controller\Autotest($this->config, $this->session);
+        $c->setAuthSimple(new class ('admin') extends Auth\Simple {
+            public function isAuthenticated(): bool
+            {
+                return false;
+            }
+
+            public function requireAuth(array $params = []): void
+            {
+                // stub
+            }
+        });
+
+        $response = $c->login($request);
+
+        $this->assertTrue($response->isSuccessful());
+    }
+
+
+    /**
      * Test that accessing the login-endpoint while authenticated results in a success-response
      *
      * @return void
