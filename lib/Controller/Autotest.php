@@ -145,7 +145,7 @@ class Autotest
      */
     private function getAuthSource(Request $request): Auth\Simple
     {
-        $sourceId = $request->get('SourceID', null);
+        $sourceId = $request->query->get('SourceID', null);
 
         if ($sourceId === null) {
             throw new Error\BadRequest('Missing required SourceID query parameter.');
