@@ -1,9 +1,19 @@
+---
+
 autotest-attributes:
-    path:       /attributes
-    defaults:   { _controller: 'SimpleSAML\Module\autotest\Controller\Autotest::attributes' }
+  path: /attributes
+  defaults: {
+    _controller: 'SimpleSAML\Module\autotest\Controller\Autotest::attributes'
+  }
+
 autotest-login:
-    path:       /login
-    defaults:   { _controller: 'SimpleSAML\Module\autotest\Controller\Autotest::login' }
+  path: /login
+  defaults: {
+    _controller: 'SimpleSAML\Module\autotest\Controller\Autotest::login'
+  }
+
 autotest-logout:
-    path:       /logout
-    defaults:   { _controller: 'SimpleSAML\Module\autotest\Controller\Autotest::logout' }
+  path: /logout
+  defaults: {
+    _controller: 'SimpleSAML\Module\autotest\Controller\Autotest::logout'
+  }
