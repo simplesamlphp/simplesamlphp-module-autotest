@@ -249,7 +249,7 @@ class AutotestTest extends TestCase
     /**
      * @return array
      */
-    public function endpoints(): array
+    public static function endpoints(): array
     {
         return [
             ['attributes'],
