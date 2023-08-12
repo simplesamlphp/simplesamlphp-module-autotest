@@ -21,12 +21,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class Autotest
 {
-    /** @var \SimpleSAML\Configuration */
-    protected Configuration $config;
-
-    /** @var \SimpleSAML\Session */
-    protected Session $session;
-
     /**
      * @var \SimpleSAML\Auth\Simple|string
      * @psalm-var \SimpleSAML\Auth\Simple|class-string
@@ -45,11 +39,9 @@ class Autotest
      * @throws \Exception
      */
     public function __construct(
-        Configuration $config,
-        Session $session
+        protected Configuration $config,
+        protected Session $session
     ) {
-        $this->config = $config;
-        $this->session = $session;
     }
 
 

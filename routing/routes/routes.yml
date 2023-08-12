@@ -5,15 +5,18 @@ autotest-attributes:
   defaults: {
     _controller: 'SimpleSAML\Module\autotest\Controller\Autotest::attributes'
   }
+  methods: [GET]
 
 autotest-login:
   path: /login
   defaults: {
     _controller: 'SimpleSAML\Module\autotest\Controller\Autotest::login'
   }
+  methods: [GET]
 
 autotest-logout:
   path: /logout
   defaults: {
     _controller: 'SimpleSAML\Module\autotest\Controller\Autotest::logout'
   }
+  methods: [GET]
