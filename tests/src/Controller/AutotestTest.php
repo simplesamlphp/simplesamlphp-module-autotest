@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace SimpleSAML\Test\Module\autotest\Controller;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use SimpleSAML\Auth;
 use SimpleSAML\Configuration;
@@ -16,9 +18,8 @@ use function call_user_func;
 
 /**
  * Set of tests for the controllers in the "autotest" module.
- *
- * @covers \SimpleSAML\Module\autotest\Controller\Autotest
  */
+#[CoversClass(Controller\AutoTest::class)]
 class AutotestTest extends TestCase
 {
     /** @var \SimpleSAML\Configuration */
@@ -222,10 +223,10 @@ class AutotestTest extends TestCase
     /**
      * Test that a missing SourceID results in an error-response
      *
-     * @dataProvider endpoints
      * @param string $endpoint
      * @return void
      */
+    #[DataProvider('endpoints')]
     public function testMissingSourceId(string $endpoint): void
     {
         $request = Request::create(
