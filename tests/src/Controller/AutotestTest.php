@@ -41,7 +41,7 @@ class AutotestTest extends TestCase
                 'module.enable' => ['autotest' => true],
             ],
             '[ARRAY]',
-            'simplesaml'
+            'simplesaml',
         );
 
         $this->session = Session::getSessionFromRequest();
@@ -60,7 +60,7 @@ class AutotestTest extends TestCase
         $request = Request::create(
             '/attributes',
             'GET',
-            ['SourceID' => 'admin']
+            ['SourceID' => 'admin'],
         );
 
         $c = new Controller\Autotest($this->config, $this->session);
@@ -93,7 +93,7 @@ class AutotestTest extends TestCase
         $request = Request::create(
             '/login',
             'GET',
-            ['SourceID' => 'admin']
+            ['SourceID' => 'admin'],
         );
 
         $c = new Controller\Autotest($this->config, $this->session);
@@ -125,7 +125,7 @@ class AutotestTest extends TestCase
         $request = Request::create(
             '/login',
             'GET',
-            ['SourceID' => 'admin']
+            ['SourceID' => 'admin'],
         );
 
         $c = new Controller\Autotest($this->config, $this->session);
@@ -157,7 +157,7 @@ class AutotestTest extends TestCase
         $request = Request::create(
             '/logout',
             'GET',
-            ['SourceID' => 'admin']
+            ['SourceID' => 'admin'],
         );
 
         $c = new Controller\Autotest($this->config, $this->session);
@@ -190,7 +190,7 @@ class AutotestTest extends TestCase
         $request = Request::create(
             '/attributes',
             'GET',
-            ['SourceID' => 'admin']
+            ['SourceID' => 'admin'],
         );
 
         $c = new Controller\Autotest($this->config, $this->session);
@@ -231,7 +231,7 @@ class AutotestTest extends TestCase
     {
         $request = Request::create(
             '/' . $endpoint,
-            'GET'
+            'GET',
         );
 
         $c = new Controller\Autotest($this->config, $this->session);
@@ -240,7 +240,7 @@ class AutotestTest extends TestCase
         $this->assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $response->getStatusCode());
         $this->assertEquals(
             "BADREQUEST('%REASON%' => 'Missing required SourceID query parameter.')",
-            $response->data['message']
+            $response->data['message'],
         );
     }
 
