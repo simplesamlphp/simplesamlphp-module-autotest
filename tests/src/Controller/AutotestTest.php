@@ -19,7 +19,7 @@ use function call_user_func;
 /**
  * Set of tests for the controllers in the "autotest" module.
  */
-#[CoversClass(Controller\AutoTest::class)]
+#[CoversClass(Controller\Autotest::class)]
 class AutotestTest extends TestCase
 {
     /** @var \SimpleSAML\Configuration */
