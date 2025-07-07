@@ -22,8 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 class Autotest
 {
     /**
-     * @var \SimpleSAML\Auth\Simple|string
-     * @psalm-var \SimpleSAML\Auth\Simple|class-string
+     * @var \SimpleSAML\Auth\Simple|class-string
      */
     protected $authSimple = Auth\Simple::class;
 
@@ -149,7 +148,7 @@ class Autotest
     /**
      * Generate a response for success
      *
-     * @param array $attributes  The attributes to include in the response
+     * @param array<mixed> $attributes  The attributes to include in the response
      * @return \SimpleSAML\XHTML\Template
      *
      */
