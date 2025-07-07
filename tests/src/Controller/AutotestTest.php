@@ -70,6 +70,7 @@ final class AutotestTest extends TestCase
                 return false;
             }
 
+            /** @param array<mixed> $params */
             public function login(array $params = []): void
             {
                 // stub
@@ -103,6 +104,7 @@ final class AutotestTest extends TestCase
                 return false;
             }
 
+            /** @param array<mixed> $params */
             public function requireAuth(array $params = []): void
             {
                 // stub
@@ -135,6 +137,7 @@ final class AutotestTest extends TestCase
                 return true;
             }
 
+            /** @param array<mixed> $params */
             public function login(array $params = []): void
             {
                 // stub
@@ -167,7 +170,8 @@ final class AutotestTest extends TestCase
                 return true;
             }
 
-            public function logout($params = null): void
+            /** @param array<mixed>|string|null $params */
+            public function logout(array|string|null $params = null): void
             {
                 // stub
             }
@@ -200,6 +204,7 @@ final class AutotestTest extends TestCase
                 return true;
             }
 
+            /** @return array<mixed> */
             public function getAttributes(): array
             {
                 return ['some' => ['multi', 'valued', 'attribute'], 'something' => ['else']];
@@ -235,7 +240,11 @@ final class AutotestTest extends TestCase
         );
 
         $c = new Controller\Autotest($this->config, $this->session);
-        $response = call_user_func([$c, $endpoint], $request);
+        $callable = [$c, $endpoint];
+        $this->assertIsCallable($callable);
+
+        /** @var \SimpleSAML\XHTML\Template $response */
+        $response = call_user_func($callable, $request);
 
         $this->assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $response->getStatusCode());
         $this->assertEquals(
@@ -246,7 +255,7 @@ final class AutotestTest extends TestCase
 
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public static function endpoints(): array
     {
