@@ -70,6 +70,7 @@ final class AutotestTest extends TestCase
                 return false;
             }
 
+
             /** @param array<mixed> $params */
             public function login(array $params = []): void
             {
@@ -104,6 +105,7 @@ final class AutotestTest extends TestCase
                 return false;
             }
 
+
             /** @param array<mixed> $params */
             public function requireAuth(array $params = []): void
             {
@@ -136,6 +138,7 @@ final class AutotestTest extends TestCase
             {
                 return true;
             }
+
 
             /** @param array<mixed> $params */
             public function login(array $params = []): void
@@ -170,6 +173,7 @@ final class AutotestTest extends TestCase
                 return true;
             }
 
+
             /** @param array<mixed>|string|null $params */
             public function logout(array|string|null $params = null): void
             {
@@ -203,6 +207,7 @@ final class AutotestTest extends TestCase
             {
                 return true;
             }
+
 
             /** @return array<mixed> */
             public function getAttributes(): array
