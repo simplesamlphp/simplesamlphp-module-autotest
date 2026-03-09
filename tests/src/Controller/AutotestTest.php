@@ -253,7 +253,7 @@ final class AutotestTest extends TestCase
 
         $this->assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $response->getStatusCode());
         $this->assertEquals(
-            "BADREQUEST('%REASON%' => 'Missing required SourceID query parameter.')",
+            '{"errorCode":"BADREQUEST","%REASON%":"Missing required SourceID query parameter."}',
             $response->data['message'],
         );
     }
